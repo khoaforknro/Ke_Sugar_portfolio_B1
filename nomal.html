@@ -2,7 +2,7 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8" />
-  <title>Photos - Ke Sugar</title>
+  <title>Photos Non-Cosplay - Ke Sugar</title>
 
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -18,7 +18,16 @@
 
     body.loaded { opacity: 1; }
 
-    img { pointer-events: none; }
+    img {
+      pointer-events: none;
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      object-position: center;
+      background-color: #fff;
+      display: block;
+    }
+
     a { text-decoration: none; color: inherit; }
 
     .page {
@@ -101,46 +110,31 @@
 
     .nav-item:hover::after { width: 100%; }
 
-    /* ✅ GALLERY SECTION */
-    .gallery-section {
+    /* ✅ BOX */
+    .normal-section {
+      background-color: #fff;
       border-radius: 24px;
-      overflow: hidden;
-      background-color: #ffffff;
+      padding: 30px 28px;
       box-shadow: 0 24px 60px rgba(56,189,248,0.18);
       border: 1px solid rgba(56,189,248,0.2);
-      width: 100%;
     }
 
-    .gallery-background {
-      background-image: url("https://iili.io/fIneulp.md.png");
-      background-size: cover;
-      background-position: center;
-      height: 500px;
-      width: 100%;
-      position: relative;
+    /* ✅ ARGB MẠNH CHO TABS */
+    .tab-buttons {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 24px;
     }
 
-    .gallery-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      height: 100%;
-      width: 100%;
-      background-color: rgba(0, 0, 0, 0.35);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      gap: 24px;
-    }
-
-    /* ✅ ARGB MẠNH */
-    .gallery-title {
-      font-size: 48px;
-      font-weight: 800;
-      letter-spacing: 6px;
+    .tab-button {
+      font-size: 13px;
+      letter-spacing: 2px;
       text-transform: uppercase;
-      text-align: center;
+      padding: 10px 16px;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
       background: linear-gradient(
         90deg,
         rgba(0,255,255,1),
@@ -150,54 +144,46 @@
         rgba(0,255,255,1)
       );
       background-size: 300%;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
       animation: flow 4s linear infinite;
+      color: #fff;
+      box-shadow: 0 0 14px rgba(56,189,248,0.6);
+      transition: transform .2s ease, box-shadow .2s ease;
     }
+
+    .tab-button:hover { transform: scale(1.05); }
+    .tab-button.active { box-shadow: 0 0 20px rgba(56,189,248,1); }
 
     @keyframes flow {
       0% { background-position: 0%; }
       100% { background-position: 300%; }
     }
 
-    .gallery-buttons {
-      display: flex;
-      gap: 20px;
+    /* ✅ GALLERY */
+    .gallery {
+      display: none;
+      opacity: 0;
+      transition: opacity .35s ease;
     }
 
-    .gallery-button {
-      font-size: 14px;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      padding: 12px 24px;
-      border-radius: 999px;
-      border: none;
-      background: linear-gradient(
-        90deg,
-        rgba(0,255,255,1),
-        rgba(0,150,255,0.9),
-        rgba(0,80,255,0.8),
-        rgba(0,150,255,0.9),
-        rgba(0,255,255,1)
-      );
-      background-size: 300%;
-      animation: flow 4s linear infinite;
-      color: white;
-      font-weight: 600;
-      cursor: pointer;
-      box-shadow: 0 0 12px rgba(14,165,233,0.4);
-      transition: transform 0.2s ease, box-shadow 0.3s ease;
+    .gallery.active {
+      display: block;
+      opacity: 1;
     }
 
-    .gallery-button:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 20px rgba(14,165,233,0.6);
+    .row-vertical {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .row-horizontal {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
     }
 
     @media (max-width: 900px) {
       .header { flex-direction: column; gap: 20px; }
-      .gallery-title { font-size: 36px; }
-      .gallery-buttons { flex-direction: column; gap: 12px; }
+      .row-vertical { grid-template-columns: repeat(2, 1fr); }
+      .row-horizontal { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -243,27 +229,63 @@
     </nav>
   </header>
 
-  <!-- ✅ GALLERY -->
-  <section class="gallery-section">
-    <div class="gallery-background">
-      <div class="gallery-overlay">
-        <div class="gallery-title">MY SHOTS</div>
+  <!-- ✅ BOX -->
+  <section class="normal-section">
 
-        <div class="gallery-buttons">
-          <a href="cosplay.html">
-            <button class="gallery-button">COSPLAY</button>
-          </a>
+    <!-- ✅ TABS -->
+    <div class="tab-buttons">
+      <button class="tab-button" onclick="showTab('cos')">PHOTOS COSPLAY</button>
+      <button class="tab-button active" onclick="showTab('non')">NON-COSPLAY PHOTOS</button>
+    </div>
 
-          <a href="normal.html">
-            <button class="gallery-button">NON-COSPLAY</button>
-          </a>
-        </div>
+    <!-- ✅ GALLERY COSPLAY -->
+    <div id="gallery-cos" class="gallery">
+      <div class="row-vertical">
+        <img src="https://i.ibb.co/PvLLnTkF/MEITU-20251021-204550486.jpg">
+        <img src="https://i.ibb.co/35WfCyHT/25HH1086.jpg">
+        <img src="https://i.ibb.co/35WfCyHT/25HH1086.jpg">
+      </div>
 
+      <div class="row-horizontal">
+        <img src="https://i.ibb.co/rGDcX5Zw/25-HH1130-2.jpg">
+        <img src="https://i.ibb.co/rGDcX5Zw/25-HH1130-2.jpg">
       </div>
     </div>
-  </section>
 
+    <!-- ✅ GALLERY NON-COSPLAY -->
+    <div id="gallery-non" class="gallery active">
+      <div class="row-vertical">
+        <img src="https://i.ibb.co/7NW490rK/snaptik-vn-Lx2-YH-1.jpg">
+        <img src="https://i.ibb.co/Zpm8wMHL/25HH1116.jpg">
+        <img src="https://i.ibb.co/Zpm8wMHL/25HH1116.jpg">
+      </div>
+
+      <div class="row-horizontal">
+        <img src="https://i.ibb.co/9mQptgSN/ORION-1.jpg">
+        <img src="https://i.ibb.co/9mQptgSN/ORION-1.jpg">
+      </div>
+    </div>
+
+  </section>
 </div>
+
+<script>
+function showTab(tab) {
+  const galleries = document.querySelectorAll('.gallery');
+  const buttons = document.querySelectorAll('.tab-button');
+
+  galleries.forEach(g => g.classList.remove('active'));
+  buttons.forEach(b => b.classList.remove('active'));
+
+  if (tab === 'cos') {
+    document.getElementById('gallery-cos').classList.add('active');
+    buttons[0].classList.add('active');
+  } else {
+    document.getElementById('gallery-non').classList.add('active');
+    buttons[1].classList.add('active');
+  }
+}
+</script>
 
 </body>
 </html>
