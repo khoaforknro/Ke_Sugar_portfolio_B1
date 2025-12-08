@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <title>Photos - Ke Sugar</title>
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #e0f2fe;
+      color: #1f2933;
+      opacity: 0;
+      transition: opacity .5s ease;
+      user-select: none;
+    }
+
+    body.loaded { opacity: 1; }
+
+    img { pointer-events: none; }
+    a { text-decoration: none; color: inherit; }
+
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 30px;
+    }
+
+    /* ✅ HEADER */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 40px;
+    }
+
+    .brand-area {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .avatar-wrapper {
+      width: 110px;
+      height: 110px;
+      border-radius: 999px;
+      overflow: hidden;
+      border: 3px solid #fff;
+      background-color: #e0f2fe;
+      box-shadow: 0 8px 20px rgba(56,189,248,0.25);
+    }
+
+    .avatar-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .brand-title {
+      font-size: 32px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    .brand-subtitle {
+      font-size: 13px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #6b7280;
+    }
+
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: flex-end;
+      max-width: 500px;
+    }
+
+    .nav-item {
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #4b5563;
+      position: relative;
+      padding-bottom: 4px;
+    }
+
+    .nav-item::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg,#3b82f6,#0ea5e9);
+      transition: width .3s ease;
+    }
+
+    .nav-item:hover::after { width: 100%; }
+
+    /* ✅ GALLERY SECTION */
+    .gallery-section {
+      border-radius: 24px;
+      overflow: hidden;
+      background-color: #ffffff;
+      box-shadow: 0 24px 60px rgba(56,189,248,0.18);
+      border: 1px solid rgba(56,189,248,0.2);
+      width: 100%;
+    }
+
+    .gallery-background {
+      background-image: url("https://iili.io/fIneulp.md.png");
+      background-size: cover;
+      background-position: center;
+      height: 500px;
+      width: 100%;
+      position: relative;
+    }
+
+    .gallery-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.35);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 24px;
+    }
+
+    /* ✅ ARGB MẠNH */
+    .gallery-title {
+      font-size: 48px;
+      font-weight: 800;
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      text-align: center;
+      background: linear-gradient(
+        90deg,
+        rgba(0,255,255,1),
+        rgba(0,150,255,0.9),
+        rgba(0,80,255,0.8),
+        rgba(0,150,255,0.9),
+        rgba(0,255,255,1)
+      );
+      background-size: 300%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: flow 4s linear infinite;
+    }
+
+    @keyframes flow {
+      0% { background-position: 0%; }
+      100% { background-position: 300%; }
+    }
+
+    .gallery-buttons {
+      display: flex;
+      gap: 20px;
+    }
+
+    .gallery-button {
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      padding: 12px 24px;
+      border-radius: 999px;
+      border: none;
+      background: linear-gradient(
+        90deg,
+        rgba(0,255,255,1),
+        rgba(0,150,255,0.9),
+        rgba(0,80,255,0.8),
+        rgba(0,150,255,0.9),
+        rgba(0,255,255,1)
+      );
+      background-size: 300%;
+      animation: flow 4s linear infinite;
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 0 12px rgba(14,165,233,0.4);
+      transition: transform 0.2s ease, box-shadow 0.3s ease;
+    }
+
+    .gallery-button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(14,165,233,0.6);
+    }
+
+    @media (max-width: 900px) {
+      .header { flex-direction: column; gap: 20px; }
+      .gallery-title { font-size: 36px; }
+      .gallery-buttons { flex-direction: column; gap: 12px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<script>
+  window.addEventListener("load", () => {
+    document.body.classList.add("loaded");
+  });
+
+  document.addEventListener('contextmenu', e => e.preventDefault());
+  document.addEventListener('keydown', e => {
+    if (e.key === 'F12') e.preventDefault();
+    if (e.ctrlKey && e.shiftKey && ['I','J','C'].includes(e.key)) e.preventDefault();
+    if (e.ctrlKey && ['U','S'].includes(e.key)) e.preventDefault();
+  });
+</script>
+
+<div class="page">
+
+  <!-- ✅ HEADER -->
+  <header class="header">
+    <div class="brand-area">
+      <div class="avatar-wrapper">
+        <img src="https://iili.io/fIneulp.md.png" />
+      </div>
+      <div>
+        <div class="brand-title">Ke Sugar</div>
+        <div class="brand-subtitle">Photography & Videography Portfolio</div>
+      </div>
+    </div>
+
+    <nav class="nav">
+      <a class="nav-item" href="index.html">MAIN</a>
+      <a class="nav-item" href="about.html">ABOUT ME</a>
+      <a class="nav-item" href="photos.html">PHOTOS</a>
+      <a class="nav-item" href="cosplay.html">PHOTOS COSPLAY</a>
+      <a class="nav-item" href="normal.html">NON-COSPLAY</a>
+      <a class="nav-item" href="videos.html">VIDEOS</a>
+      <a class="nav-item" href="service.html">SERVICE & CONTACT</a>
+      <a class="nav-item" href="rules.html">RULES</a>
+    </nav>
+  </header>
+
+  <!-- ✅ GALLERY -->
+  <section class="gallery-section">
+    <div class="gallery-background">
+      <div class="gallery-overlay">
+        <div class="gallery-title">MY SHOTS</div>
+
+        <div class="gallery-buttons">
+          <a href="cosplay.html">
+            <button class="gallery-button">COSPLAY</button>
+          </a>
+
+          <a href="normal.html">
+            <button class="gallery-button">NON-COSPLAY</button>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</div>
+
+</body>
+</html>
