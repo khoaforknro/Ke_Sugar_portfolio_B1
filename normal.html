@@ -119,7 +119,7 @@
       border: 1px solid rgba(56,189,248,0.2);
     }
 
-    /* ✅ TAB BUTTONS (FULL SỬA) */
+    /* ✅ TAB BUTTONS (BẢN MỚI) */
     .tab-buttons {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -146,12 +146,12 @@
       transition: transform .25s ease, box-shadow .25s ease, border .25s ease;
     }
 
-    /* ✅ Hover nhẹ */
+    /* ✅ Hover = TO NHẤT */
     .tab-button:hover {
-      transform: scale(1.05);
+      transform: scale(1.07);
     }
 
-    /* ✅ TAB ACTIVE = VIỀN SÁNG CHUYỂN MÀU MƯỢT */
+    /* ✅ ACTIVE = GLOW + VIỀN CHẠY + SCALE NHỎ HƠN HOVER */
     .tab-button.active {
       border: 2px solid transparent;
       background: linear-gradient(#0000, #0000) padding-box,
@@ -165,7 +165,7 @@
 
       animation: borderFlow 4s linear infinite;
       box-shadow: 0 0 22px rgba(56,189,248,1);
-      transform: scale(1.06);
+      transform: scale(1.04);
     }
 
     /* ✅ Animation chạy viền */
