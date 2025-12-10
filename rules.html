@@ -18,6 +18,7 @@
 
     body.loaded { opacity: 1; }
 
+    img { pointer-events: none; }
     a { text-decoration: none; color: inherit; }
 
     .page {
@@ -26,14 +27,12 @@
       padding: 40px 30px;
     }
 
-    /* HEADER */
+    /* ✅ HEADER (ĐỒNG NHẤT INDEX) */
     .header {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
       margin-bottom: 40px;
-      flex-wrap: wrap;
-      gap: 20px;
     }
 
     .brand-area {
@@ -56,9 +55,9 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      pointer-events: none;
       -webkit-user-drag: none;
       user-drag: none;
+      pointer-events: none;
     }
 
     .brand-title {
@@ -105,22 +104,21 @@
 
     .nav-item:hover::after { width: 100%; }
 
-    /* RULES BOX */
+    /* ✅ RULES BOX (ĐỒNG NHẤT INDEX) */
     .rules-section {
       background-color: #fff;
       border-radius: 24px;
-      padding: 40px 32px;
+      padding: 30px 28px;
       box-shadow: 0 24px 60px rgba(56,189,248,0.18);
       border: 1px solid rgba(56,189,248,0.2);
     }
 
+    /* ✅ ARGB TITLE GIỐNG INDEX */
     .section-title {
-      font-size: 38px;
+      font-size: 44px;
       font-weight: 800;
-      letter-spacing: 5px;
+      letter-spacing: 6px;
       text-transform: uppercase;
-      margin-bottom: 10px;
-      text-align: center;
       background: linear-gradient(
         90deg,
         rgba(0,255,255,1),
@@ -133,6 +131,13 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       animation: flow 4s linear infinite;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    @keyframes flow {
+      0% { background-position: 0%; }
+      100% { background-position: 300%; }
     }
 
     .section-subtitle {
@@ -144,12 +149,7 @@
       margin-bottom: 30px;
     }
 
-    @keyframes flow {
-      0% { background-position: 0%; }
-      100% { background-position: 300%; }
-    }
-
-    /* GRID */
+    /* ✅ GRID */
     .rules-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -183,7 +183,7 @@
       font-size: 15px;
     }
 
-    /* CONTACT */
+    /* ✅ CONTACT */
     .contact {
       text-align: center;
       margin-top: 20px;
@@ -215,10 +215,9 @@
       transform: scale(1.1);
     }
 
-    @media (max-width: 800px) {
-      .rules-grid {
-        grid-template-columns: 1fr;
-      }
+    @media (max-width: 900px) {
+      .header { flex-direction: column; gap: 20px; }
+      .rules-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -240,7 +239,7 @@
 
 <div class="page">
 
-  <!-- HEADER -->
+  <!-- ✅ HEADER GIỐNG INDEX -->
   <header class="header">
     <div class="brand-area">
       <div class="avatar-wrapper">
@@ -268,7 +267,7 @@
     </nav>
   </header>
 
-  <!-- RULES SECTION -->
+  <!-- ✅ RULES SECTION -->
   <section class="rules-section">
 
     <div class="section-title">RULES</div>
@@ -293,12 +292,12 @@
         <ul>
           <li>Trả ảnh retouch định dạng JPEG (cần PNG/RAW thì mạnh dạng nhắn mình)</li>
           <li>Thời gian trả ảnh: 1 ngày – 3 tuần sau khi chọn ảnh</li>
-          <li>Lưu ảnh trên Drive trong 1 tuần-10 ngày, sau đó sẽ bị xóa</li>
+          <li>Lưu ảnh trên Drive trong 1 tuần–10 ngày, sau đó sẽ bị xóa</li>
           <li>Đi fest trễ 30': chờ đến lượt cuối, huỷ lượt (mất cọc), hoặc chụp thời gian còn lại</li>
-          <li>Retouch cơ bản: cà da, bóp mặt, bóp eo, chỉnh màu, fill tóc, xóa đồ bảo hộ nếu bạn cần(chỉ ngoài fest)</li>
+          <li>Retouch cơ bản: cà da, bóp mặt, bóp eo, chỉnh màu, fill tóc, xóa đồ bảo hộ nếu cần (chỉ ngoài fest)</li>
           <li>Không bắt chước style photographer khác</li>
           <li>Không nhận manip</li>
-          <li>Có hỗ trợ pose cơ bản nhưng nên chuẩn bị trước(hoặc nhắn mình char gì trước 1 tuần mình tìm hiểu pose)</li>
+          <li>Có hỗ trợ pose cơ bản nhưng nên chuẩn bị trước (hoặc nhắn mình char gì trước 1 tuần để mình tìm pose)</li>
         </ul>
 
       </div>
@@ -309,21 +308,21 @@
         <div class="rules-title">QUAY</div>
         <ul>
           <li>Trả video định dạng .MP4 (cần .MOV thì mạnh dạng nhắn mình)</li>
-          <li>Thời gian trả video: 5 ngày – 4 tuần(do mình yếu ý tưởng)</li>
-          <li>Lưu video trên Drive trong 1 tuần-10 ngày, sau đó sẽ xóa</li>
+          <li>Thời gian trả video: 5 ngày – 4 tuần (do mình yếu ý tưởng)</li>
+          <li>Lưu video trên Drive trong 1 tuần–10 ngày, sau đó sẽ xóa</li>
           <li>Bạn chọn nhạc và nội dung</li>
-          <li>Bên mình xây dựng kịch bản dựa trên nội dung + địa điểm bạn chọn(sẽ có thảo luận trước khi bắt đầu)</li>
+          <li>Bên mình xây dựng kịch bản dựa trên nội dung + địa điểm bạn chọn (sẽ thảo luận trước)</li>
           <li>Không khuyến khích kịch bản dài/phức tạp vì hiện chỉ có mình quay</li>
-          <li>Video ngang hay dọc là do bạn chọn, và sẽ cố định trong 1 source</li>
+          <li>Video ngang/dọc do bạn chọn và cố định trong 1 source</li>
           <li>Có sample thì quay dễ hơn</li>
-          <li>Không mạnh về effect giật giật nhịp nhanh các bận cân nhắc có thể sẽ làm mà thời gian hơi lâu</li>
+          <li>Không mạnh effect giật giật nhịp nhanh, có thể làm nhưng hơi lâu</li>
         </ul>
 
       </div>
 
     </div>
 
-    <!-- CONTACT -->
+    <!-- ✅ CONTACT -->
     <div class="contact">
       <div class="contact-title">CONTACT</div>
 
